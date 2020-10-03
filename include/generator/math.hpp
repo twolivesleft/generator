@@ -115,19 +115,19 @@ glm::tvec2<T> cross(const glm::tvec2<T>& v) {
 	return glm::tvec2<T>(-v.y, v.x);
 }
 
-template <typename T>
-glm::tvec3<T> transform(const glm::tquat<T>& q, const glm::tvec3<T>& v) {
+template <typename T, glm::precision P = glm::defaultp>
+glm::tvec3<T> transform(const glm::tquat<T, P>& q, const glm::tvec3<T>& v) {
 	const glm::tvec3<T> temp = T{2.0} * cross(glm::tvec3<T>(q.x, q.y, q.z), v);
 	return v + q.w * temp + cross(glm::tvec3<T>(q.x, q.y, q.z), temp);
 }
 
-template <typename T>
-glm::tquat<T> qrotate(const T& angle, const glm::tvec3<T>& axis) {
+template <typename T, glm::precision P = glm::defaultp>
+glm::tquat<T, P> qrotate(const T& angle, const glm::tvec3<T>& axis) {
 	using std::sin;
 	using std::cos;
 
 	const T a = angle / T{2.0};
-	return glm::tquat<T>{cos(a), sin(a) * axis};
+	return glm::tquat<T, P>{cos(a), sin(a) * axis};
 }
 
 template <typename T>
