@@ -5,6 +5,8 @@
 #include "ShapeVertex.hpp"
 #include "Edge.hpp"
 
+#include <utility>
+
 namespace generator
 {
 
