@@ -67,7 +67,7 @@ public:
 
 		const LatheMesh* mesh_;
 
-		decltype(mesh_->shape_.edges()) shape_Edges;
+		typename std::decay<decltype(std::declval<Shape>().edges())>::type shape_Edges;
 
 		int i_;
 
@@ -121,7 +121,7 @@ public:
 
 		const LatheMesh* mesh_;
 
-		decltype(mesh_->shape_.vertices()) shapeVertices_;
+		typename std::decay<decltype(std::declval<Shape>().vertices())>::type shapeVertices_;
 
 		int i_;
 

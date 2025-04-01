@@ -73,9 +73,9 @@ public:
 
 		const ExtrudeMesh* mesh_;
 
-		decltype(mesh_->shape_.edges()) shapeEdges_;
+		typename std::decay<decltype(std::declval<Shape>().edges())>::type shapeEdges_;
 
-		decltype(mesh_->path_.edges()) pathEdges_;
+		typename std::decay<decltype(std::declval<Path>().edges())>::type pathEdges_;
 
 		bool odd_;
 
@@ -130,9 +130,9 @@ public:
 
 		const ExtrudeMesh* mesh_;
 
-		decltype(mesh_->shape_.vertices()) shapeVertices_;
+		typename std::decay<decltype(std::declval<Shape>().vertices())>::type shapeVertices_;
 
-		decltype(mesh_->path_.vertices()) pathVertices_;
+		typename std::decay<decltype(std::declval<Path>().vertices())>::type pathVertices_;
 
 		Vertices(const ExtrudeMesh& mesh) :
 			mesh_{&mesh},
